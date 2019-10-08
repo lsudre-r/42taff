@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
 int	ft_atoi(char *str)
 {
 	int i;
@@ -38,4 +36,3 @@ int	ft_atoi(char *str)
     }
 	return 0;
 }
-u

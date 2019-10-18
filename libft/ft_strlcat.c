@@ -10,71 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int my_strlcat(char *dest, char const *src, unsigned int buffer_size)
-{
-	unsigned int dest_base_size = strlen(dest);
-	unsigned int i = 0;
-	unsigned int const i_max = (buffer_size-1) - dest_base_size;
-	while (src[i]!='\0' && i < i_max) {
-		dest[dest_base_size+i] = src[++i];
-	}
-	dest[dest_base_size+i] = '\0';
-	return dest_base_size+i;
-}
+#include "libft.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	(void)argc;
-	printf("%u\n", my_strlcat(argv[1], argv[2], sizeof(argv[1])));
-	printf("%zu", strlcat(argv[1], argv[2], sizeof(argv[1])));
-	return 0;
-}
-
-/*size_t	ft_strlcat(char *dest, char *src, size_t size)
-{
+	size_t dst_size;
 	size_t i;
-	size_t j;
-	size_t res;
+	size_t max;
 
 	i = 0;
-	j = 0;
-	res = 0;
-	while (dest[i] != '\0')
-		i++;
-	while (src[res] != '\0')
-		res++;
-	if (size <= i)
-		res += size;
-	else
-		res += i;
-	while (src[j] != '\0' && i + 1 < size)
+	dst_size = strlen(dst);
+	max = size - dst_size - 1;
+	while (src[i] != '\0' && i < max)
 	{
-		dest[i] = src[j];
+		dst[dst_size + i] = src[i];
 		i++;
-		j++;
 	}
-	dest[i] = '\0';
-	return (res);
-}*/
-
-
-
-unsigned int my_strlcat(char *dest, char const *src, unsigned int buffer_size)
-{
-	unsigned int dest_base_size = strlen(dest);
-	unsigned int i = 0;
-	unsigned int const i_max = (buffer_size-1) - dest_base_size;
-	while (src[i]!='\0' && i < i_max) {
-		dest[dest_base_size+i] = src[++i];
-	}
-	dest[dest_base_size+i] = '\0';
-	return dest_base_size+i;
-}
-
-int	main(int argc, char **argv)
-{
-	(void)argc;
-	printf("%u\n", my_strlcat(argv[1], argv[2], sizeof(argv[1])));
-	printf("%zu", strlcat(argv[1], argv[2], sizeof(argv[1])));
-	return 0;
+	dst[dst_size + i] = '\0';
+	return (dst_size + strlen(src));
 }

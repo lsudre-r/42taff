@@ -1,30 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsudre-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 16:20:45 by lsudre-r          #+#    #+#             */
-/*   Updated: 2019/10/08 16:20:47 by lsudre-r         ###   ########.fr       */
+/*   Created: 2019/10/16 17:03:57 by lsudre-r          #+#    #+#             */
+/*   Updated: 2019/10/16 17:03:59 by lsudre-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	**ft_strsplit(char const *s, char c)
 {
-	size_t	i;
+	char	**dst;
+	int		i;
+	int		j;
+	int		k;
+	int		l;;
 
-	i = ft_strlen(s);
-	while (i > 0)
+	i = 0;
+	j = 0;
+	k = 0;
+	l = 0;
+	if (!(dst = (char **)malloc(ft_strlen(s) * sizeof(char *))))
+		return (NULL);
+	while (s[i] != '\0')
 	{
 		if (s[i] == c)
-			break ;
-		--i;
+		{
+			k = i;
+			while (s[i] != c)
+			{
+				i++;
+				j++;
+			}
+			ft_strncpy(dst[l], ((char*)(dst + i)), j);
+			l++;
+		}
 	}
-	if (i == 0 && s[0] != c)
-		return (NULL);
-	else
-		return ((char *)(s + i));
+	return (dst);
 }

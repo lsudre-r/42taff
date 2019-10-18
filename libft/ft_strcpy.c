@@ -10,11 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libc.h>
-
 char	*ft_strcpy(char *dest, const char *src)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (src[i] != '\0')
@@ -24,11 +22,4 @@ char	*ft_strcpy(char *dest, const char *src)
 	}
 	dest[i] = '\0';
 	return (dest);
-}
-
-int main(int argc, char **argv)
-{
-    (void)argc;
-    printf("%s", ft_strcpy(argv[1], argv[2]));
-    return 0;
 }

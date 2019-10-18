@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsudre-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 16:20:45 by lsudre-r          #+#    #+#             */
-/*   Updated: 2019/10/08 16:20:47 by lsudre-r         ###   ########.fr       */
+/*   Created: 2019/10/10 16:25:39 by lsudre-r          #+#    #+#             */
+/*   Updated: 2019/10/10 16:25:41 by lsudre-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	*ft_memmove(void *dest, void *src, size_t n)
 {
+	char	*asrc;
 	size_t	i;
 
-	i = ft_strlen(s);
-	while (i > 0)
+	i = 0;
+	asrc = (char *)src;
+	while (i < n)
 	{
-		if (s[i] == c)
-			break ;
-		--i;
+		*((unsigned char*)(dest + i)) = asrc[i];
+		i++;
 	}
-	if (i == 0 && s[0] != c)
-		return (NULL);
-	else
-		return ((char *)(s + i));
+	return (dest);
 }

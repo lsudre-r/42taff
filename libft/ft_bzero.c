@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsudre-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 16:20:45 by lsudre-r          #+#    #+#             */
-/*   Updated: 2019/10/08 16:20:47 by lsudre-r         ###   ########.fr       */
+/*   Created: 2019/10/10 14:05:15 by lsudre-r          #+#    #+#             */
+/*   Updated: 2019/10/10 14:05:17 by lsudre-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	ft_bzero(void *s, size_t n)
 {
-	size_t	i;
+	size_t			i;
+	unsigned char	*mem;
 
-	i = ft_strlen(s);
-	while (i > 0)
+	mem = s;
+	i = 0;
+	while (mem[i] != '\0' && i < n)
 	{
-		if (s[i] == c)
-			break ;
-		--i;
+		mem[i] = '\0';
+		i++;
 	}
-	if (i == 0 && s[0] != c)
-		return (NULL);
-	else
-		return ((char *)(s + i));
 }

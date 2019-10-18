@@ -10,23 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.c>
+#include "libft.h"
 
-char *strnstr(const char *big, const char *little, size_t loc)
+char	*strnstr(const char *big, const char *little, size_t loc)
 {
-	int i;
-	int j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
-	if (to_find[0] == '\0')
-		return (str);
-	while (str[i] != '\0')
+	if (little[0] == '\0')
+		return ((char *)big);
+	while (big[i] != '\0')
 	{
 		j = 0;
-		while ((str[i + j] == to_find[j]) && (j <= loc))
+		while ((big[i + j] == little[j]) && (j <= loc))
 		{
-			if (to_find[j + 1] == '\0')
-				return (str + i);
+			if (little[j + 1] == '\0')
+				return ((char *)big + i);
 			j++;
 		}
 		i++;

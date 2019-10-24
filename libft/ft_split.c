@@ -1,25 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsudre-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 15:25:25 by lsudre-r          #+#    #+#             */
-/*   Updated: 2019/10/09 15:25:27 by lsudre-r         ###   ########.fr       */
+/*   Created: 2019/10/16 17:03:57 by lsudre-r          #+#    #+#             */
+/*   Updated: 2019/10/16 17:03:59 by lsudre-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+char	**ft_split(char const *s, char c)
 {
-	char	*dst;
-	size_t	size;
+	char	**dst;
+	int		i;
+	int		j;
+	int		k;
+	int		l;
 
-	size = ft_strlen(s) + 1;
-	dst = malloc(size);
-	if (dst == NULL)
+	i = 0;
+	j = 0;
+	k = 0;
+	l = 0;
+	if (!(dst = (char **)malloc(ft_strlen(s) * sizeof(char *))))
 		return (NULL);
-	return (ft_memcpy(dst, s, size));
+	while (s[i] != '\0')
+	{
+		if (s[i] == c)
+		{
+			k = i;
+			while (s[i++] != c)
+				j++;
+			ft_strncpy(dst[l], ((char*)(dst + i)), j);
+			l++;
+		}
+	}
+	return (dst);
 }

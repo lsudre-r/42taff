@@ -1,44 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_intlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsudre-r <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/16 17:03:57 by lsudre-r          #+#    #+#             */
-/*   Updated: 2019/10/16 17:03:59 by lsudre-r         ###   ########.fr       */
+/*   Created: 2019/10/22 14:02:13 by lsudre-r          #+#    #+#             */
+/*   Updated: 2019/10/22 14:02:14 by lsudre-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_strsplit(char const *s, char c)
+int ft_intlen(unsigned x)
 {
-	char	**dst;
-	int		i;
-	int		j;
-	int		k;
-	int		l;;
-
-	i = 0;
-	j = 0;
-	k = 0;
-	l = 0;
-	if (!(dst = (char **)malloc(ft_strlen(s) * sizeof(char *))))
-		return (NULL);
-	while (s[i] != '\0')
-	{
-		if (s[i] == c)
-		{
-			k = i;
-			while (s[i] != c)
-			{
-				i++;
-				j++;
-			}
-			ft_strncpy(dst[l], ((char*)(dst + i)), j);
-			l++;
-		}
-	}
-	return (dst);
+    if (x >= 1000000000) return 10;
+    if (x >= 100000000)  return 9;
+    if (x >= 10000000)   return 8;
+    if (x >= 1000000)    return 7;
+    if (x >= 100000)     return 6;
+    if (x >= 10000)      return 5;
+    if (x >= 1000)       return 4;
+    if (x >= 100)        return 3;
+    if (x >= 10)         return 2;
+    return 1;
 }

@@ -17,11 +17,12 @@ void	*ft_calloc(size_t coun, size_t size)
 	char	*dst;
 
 	if (coun == 0 || size == 0)
-		return (NULL);
-	else
 	{
-		dst = malloc(coun * (size * sizeof(size_t)) + 1);
-		dst = ft_memset(dst, 0, coun * sizeof(size_t));
-		return (dst);
+		coun = 1;
+		size = 1;
 	}
+	if (!(dst = malloc(coun * size)))
+		return (NULL);
+	dst = ft_memset(dst, 0, coun * size);
+	return (dst);
 }

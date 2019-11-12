@@ -1,0 +1,3 @@
+[submodule "netwhat/netwhat42-train"]
+	path = netwhat/netwhat42-train
+	url = https://github.com/adblanc/netwhat42-train.git

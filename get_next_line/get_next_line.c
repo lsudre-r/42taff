@@ -15,6 +15,8 @@
 int	get_next_line(int fd, char **line)
 {
 	static char		*statik;
-	char			buff[BUFF_SIZE + 1]
+	char			buff[BUFF_SIZE + 1];
+	char			*tmp;
+
 
 }

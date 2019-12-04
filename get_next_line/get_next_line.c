@@ -12,55 +12,7 @@
 
 #include "get_next_line.h"
 
-
-static char		*ft_strdup(const char *s)
-{
-	char	*dst;
-	size_t	size;
-
-	size = ft_strlen(s) + 1;
-	dst = malloc(size);
-	if (dst == NULL)
-		return (NULL);
-	return (ft_memcpy(dst, s, size));
-}
-
-/*
-** Allocates with malloc() and returns a “fresh” string ending with ’\0’,
-** result of the concatenation of s1 and s2. If the allocation fails the
-** function returns NULL.
-*/
-
-static char			*ft_strjoin(char const *s1, char const *s2)
-{
-	int				size;
-	unsigned int	i;
-	char			*dst;
-
-	i = 0;
-	if (!s1 && !s2)
-		return (NULL);
-	if (!s1 || !s2)
-		return (!s1 ? ft_strdup(s2) : ft_strdup(s1));
-	size = ft_strlen(s1) + ft_strlen(s2);
-	if (!(dst = malloc(sizeof(char) * (size + 1))))
-		return (NULL);
-	while (*s1 != '\0')
-		dst[i++] = *s1++;
-	while (*s2 != '\0')
-		dst[i++] = *s2++;
-	dst[i] = '\0';
-	return (dst);
-}
-
-/*
-** Verify if whatever is in the stack, has a newline. If it doesn't, returns
-** a zero (0) to indicate that it's not valid. If there is a newline, we make a
-** copy of the stack into the line, and we copied whatever was in the stack
-** before, back to the stack (with the temporary stack that we created).
-*/
-
-static int			gnl_verify_line(char **stack, char **line)
+static int			gnl_verif_nline(char **stack, char **ligne)
 {
 	char			*tmp_stack;
 	char			*strchr_stack;
@@ -73,7 +25,7 @@ static int			gnl_verify_line(char **stack, char **line)
 			return (0);
 	tmp_stack = &strchr_stack[i];
 	*tmp_stack = '\0';
-	*line = ft_strdup(*stack);
+	*ligne = ft_strdup(*stack);
 	*stack = ft_strdup(tmp_stack + 1);
 	return (1);
 }
@@ -109,7 +61,7 @@ static	int			gnl_read_file(int fd, char *heap, char **stack, char **line)
 		}
 		else
 			*stack = ft_strdup(heap);
-		if (gnl_verify_line(stack, line))
+		if (gnl_verif_nline(stack, line))
 			break ;
 	}
 	return (RET_VALUE(ret));
@@ -145,7 +97,7 @@ int					get_next_line(int const fd, char **line)
 		|| !(heap = (char *)malloc(sizeof(char) * BUFF_SIZE + 1)))
 		return (-1);
 	if (stack[fd])
-		if (gnl_verify_line(&stack[fd], line))
+		if (gnl_verif_nline(&stack[fd], line))
 			return (1);
 	i = 0;
 	while (i < BUFF_SIZE)

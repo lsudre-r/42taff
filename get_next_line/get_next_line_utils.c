@@ -11,6 +11,22 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	if (!src && !dest)
+		return (NULL);
+	while (n != 0)
+	{
+		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+		n--;
+		i++;
+	}
+	return (dest);
+}
+
 static char		*ft_strdup(const char *s)
 {
 	char	*dst;

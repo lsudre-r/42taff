@@ -30,21 +30,7 @@ static int			gnl_verif_nline(char **stack, char **ligne)
 	return (1);
 }
 
-/*
-** Reads into the heap, from the file descriptors, a specific number of bytes
-** defined by the BUFF_SIZE macro in the get_nex_line.h file. It's going to
-** continue the reading when the return value of the read function is greater
-** than zero (no errors, or if there is nothing else to read).
-** If there is something in the stack, we will concatinate whatever is in
-** there, with whatever is read in the heap. If no, we will just add
-** whatever is in the heap into the stack. Then we will verify the stack to
-** see if there is a newline. If there is, we will break from the while loop
-** and force the positive ret value into a one (1), using the RET_VALUE() macro.
-** This answer form SO helped me visualize the stack and heap in a better way:
-** http://stackoverflow.com/a/1213360
-*/
-
-static	int			gnl_read_file(int fd, char *heap, char **stack, char **line)
+static	int			gnl_read_file(int fd, char *heap, char **stack, char **ligne)
 {
 	int				ret;
 	char			*tmp_stack;
@@ -61,30 +47,11 @@ static	int			gnl_read_file(int fd, char *heap, char **stack, char **line)
 		}
 		else
 			*stack = ft_strdup(heap);
-		if (gnl_verif_nline(stack, line))
+		if (gnl_verif_nline(stack, ligne))
 			break ;
 	}
 	return (RET_VALUE(ret));
 }
-
-/*
-** This is where the real shit happens.
-** It first checks for errors (is the line is empty, if the number of the file
-** descriptor is invalid, or if it fails to allocate the heap), so it can return
-** a minus one (-1) if needed.
-**
-** If there is something in the stack (because we are using a static variable),
-** we verify that there is a newline. If not, we allocate memory for the heap,
-** and we read the file.
-**
-** When the reading of the file ends, we will free the heap (we're not gonna
-** use it anymore), and we check for the value of ret (if it's 1 or -1, return
-** that, if the stack is empty, return 0). If neither of these conditions are
-** valid, we assing line to the value of the stack, free the stack, and return 1
-**
-** A good read about file descriptors:
-** http://www.bottomupcs.com/file_descriptors.xhtml
-*/
 
 int					get_next_line(int const fd, char **line)
 {

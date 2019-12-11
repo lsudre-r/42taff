@@ -21,6 +21,7 @@
 # define RET_VALUE(ret)	ret > 0 ? 1 : ret
 
 size_t			ft_strlen(const char *str);
+void            *ft_memcpy(void *dest, const void *src, size_t n);
 static char		*ft_strdup(const char *s);
 static char		*ft_strjoin(char const *s1, char const *s2);
 int				get_next_line(int const fd, char **line);

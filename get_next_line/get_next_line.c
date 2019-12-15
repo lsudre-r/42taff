@@ -50,7 +50,8 @@ static	int			gnl_read_file(int fd, char *heap, char **stack, char **ligne)
 		if (gnl_verif_nline(stack, ligne))
 			break ;
 	}
-	return (RET_VALUE(ret));
+	ret > 0 ? 1 : ret;
+	return (ret);
 }
 
 int					get_next_line(int const fd, char **line)

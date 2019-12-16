@@ -16,15 +16,12 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-# define BUFF_SIZE 8
-# define MAX_FD 1000
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 64
+# endif
 
-size_t			ft_strlen(const char *str);
-void            *ft_memcpy(void *dest, const void *src, size_t n);
-static char		*ft_strdup(const char *s);
-static char		*ft_strjoin(char const *s1, char const *s2);
-static int		gnl_verif_nline(char **stack, char **ligne);
-static	int		gnl_read_file(int fd, char *heap, char **stack, char **ligne);
+# define MAX_FD 1024
+
 int				get_next_line(int const fd, char **line);
 
 #endif

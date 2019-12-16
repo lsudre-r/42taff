@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lsudre-r <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/15 22:58:15 by lsudre-r          #+#    #+#             */
+/*   Updated: 2019/12/15 22:58:18 by lsudre-r         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "get_next_line.h"
 
@@ -27,7 +38,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 
-static char		*ft_strdup(const char *s)
+char		*ft_strdup(const char *s)
 {
 	char	*dst;
 	size_t	size;
@@ -39,7 +50,7 @@ static char		*ft_strdup(const char *s)
 	return (ft_memcpy(dst, s, size));
 }
 
-static char			*ft_strjoin(char const *s1, char const *s2)
+char			*ft_strjoin(char const *s1, char const *s2)
 {
 	int				size;
 	unsigned int	i;
@@ -60,4 +71,3 @@ static char			*ft_strjoin(char const *s1, char const *s2)
 	dst[i] = '\0';
 	return (dst);
 }
-

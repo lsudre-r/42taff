@@ -12,6 +12,12 @@
 
 #include "get_next_line.h"
 
+size_t	ft_strlen(const char *str);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+char	*ft_strdup(const char *s);
+char	*ft_strjoin(char const *s1, char const *s2);
+
+
 static int			gnl_verif_nline(char **stack, char **ligne)
 {
 	char			*tmp_stack;
@@ -35,7 +41,7 @@ static	int			gnl_read_file(int fd, char *heap, char **stack, char **ligne)
 	int				ret;
 	char			*tmp_stack;
 
-	while ((ret = read(fd, heap, BUFF_SIZE)) > 0)
+	while ((ret = read(fd, heap, BUFFER_SIZE)) > 0)
 	{
 		heap[ret] = '\0';
 		if (*stack)
@@ -50,7 +56,7 @@ static	int			gnl_read_file(int fd, char *heap, char **stack, char **ligne)
 		if (gnl_verif_nline(stack, ligne))
 			break ;
 	}
-	ret > 0 ? 1 : ret;
+	ret = ret > 0 ? 1 : ret;
 	return (ret);
 }
 
@@ -62,13 +68,13 @@ int					get_next_line(int const fd, char **line)
 	int				i;
 
 	if (!line || (fd < 0 || fd >= MAX_FD) || (read(fd, stack[fd], 0) < 0) \
-		|| !(heap = (char *)malloc(sizeof(char) * BUFF_SIZE + 1)))
+		|| !(heap = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1)))
 		return (-1);
 	if (stack[fd])
 		if (gnl_verif_nline(&stack[fd], line))
 			return (1);
 	i = 0;
-	while (i < BUFF_SIZE)
+	while (i < BUFFER_SIZE)
 		heap[i++] = '\0';
 	ret = gnl_read_file(fd, heap, &stack[fd], line);
 	free(heap);

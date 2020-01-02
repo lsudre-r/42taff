@@ -2,10 +2,7 @@
     "configurations": [
         {
             "name": "Win32",
-            "includePath": [
-                "${workspaceFolder}/**",
-                "${workspaceFolder}/vcpkg/ports/fontconfig/include/win32"
-            ],
+            "includePath": [],
             "defines": [
                 "_DEBUG",
                 "UNICODE",

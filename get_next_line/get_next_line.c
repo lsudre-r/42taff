@@ -93,8 +93,8 @@ int					get_next_line(int const fd, char **line)
 		|| !(heap = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1)))
 		return (-1);
 	i = 0;
-	while (i < BUFFER_SIZE)
-		heap[i++] = '\0';
+	// while (i < BUFFER_SIZE)
+	// 	heap[i++] = '\0';
 	ret = gnl_read_file(fd, heap, stack + fd, line);
 	free(heap);
 	return (ret);

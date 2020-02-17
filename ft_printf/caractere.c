@@ -16,6 +16,32 @@
 #include <string.h>
 #include <unistd.h>
 
+// #include<stdarg.h>
+// #include<stdio.h>
+
+// int sum(int num_args, ...) 
+// {
+// 	int val = 0;
+// 	va_list ap;
+// 	int i;
+
+// 	i = 0;
+// 	va_start(ap, num_args);
+// 	while(i++ < num_args)
+// 	{
+// 		val += va_arg(ap, int);
+// 	}
+// 	va_end(ap);
+// 	return val;
+// }
+// int	main(void) 
+// {
+// 	printf("Sum of 10, 20 and 30 = %d\n",  sum(3, 10, 20, 30) );
+// 	printf("Sum of 4, 20, 25 and 30 = %d\n",  sum(4, 4, 20, 25, 30) );
+// 	return 0;
+// }
+
+
 // int		ft_printf(const char *fmt, ...)
 // {
 // 	va_list ap, ap2;

@@ -12,62 +12,16 @@
 
 #include <stdarg.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
-
-// #include<stdarg.h>
-// #include<stdio.h>
-
-// int sum(int num_args, ...) 
-// {
-// 	int val = 0;
-// 	va_list ap;
-// 	int i;
-
-// 	i = 0;
-// 	va_start(ap, num_args);
-// 	while(i++ < num_args)
-// 	{
-// 		val += va_arg(ap, int);
-// 	}
-// 	va_end(ap);
-// 	return val;
-// }
-// int	main(void) 
-// {
-// 	printf("Sum of 10, 20 and 30 = %d\n",  sum(3, 10, 20, 30) );
-// 	printf("Sum of 4, 20, 25 and 30 = %d\n",  sum(4, 4, 20, 25, 30) );
-// 	return 0;
-// }
-
-
-// int		ft_printf(const char *fmt, ...)
-// {
-// 	va_list ap, ap2;
-// 	int d;
-// 	char c, *s;
-
-// 	va_start(ap, fmt);
-// 	va_copy(ap2, ap);
-// 	while (*fmt)
-// 	{
-// 		if (fmt = 's')
-// 			s = va_arg(ap, char *);
-// 		else if (fmt ='d')
-// 			d = va_arg(ap, int);
-// 		else if(fmt = 'c')
-// 			c = va_arg(ap, int);
-// 	}
-// 	va_end(ap);
-// 	va_end(ap2);
-// }
-
 
 int print_int(int val, char *buffer, int pos)
 {
     char s[30];
-    int i = 0;
+    int i;
+    if(val < 0)
+        i = 2;
+	else
+		i = 0;
     while(val)
     {
         s[i++] = val % 10 + '0';
@@ -76,7 +30,7 @@ int print_int(int val, char *buffer, int pos)
     i--;
     if(pos + i > 4096)
     {
-        fwrite(buffer,1,4096,stdout);
+        write(1, buffer, 4096);
         pos = 0;
     }
     while(i >= 0)
@@ -84,55 +38,70 @@ int print_int(int val, char *buffer, int pos)
     return(pos);
 }
 
+int print_strchar(char *tp, int i, char *buffer)
+{
+    while(*tp)
+    {
+        
+        if(i==4096)
+        {
+            write(1, buffer, 4096);
+            i = 0;
+            printf("ewefwe");
+        }
+        buffer[i++]=*tp++;
+    }
+    return(i);
+}
+
+
 void ft_printf(const char * format ,...)
 {
-    char buffer[4096],ch;
+    char buffer[4096];
+    char ch;
     char *tp;
+    char c;
     va_list list;
     va_start(list,format);
     int val;
-    int i = 0,j = 0;
-    while(*format)
+    int i = 0;
+    while((ch=*format))
     {
         if(i == 4096)
         {
-            fwrite(buffer,1,4096,stdout);
+            write(1, buffer, 4096);
             i = 0;
         }
         if(ch == '%')
         {
-            ch = *(format + 1);
-            if(ch == 'd')
+            ch = *++(format);
+            if(ch == 'd' || ch == 'i')
             {
                 val = va_arg(list, int);
                 i = print_int(val, buffer, i);
             }
             if(ch == 's')
             {
-                tp = va_arg(list, char*);
-                while(*tp)
-                {
-                    if(i==4096)
-                    {
-                        fwrite(stdout, buffer, 4096);
-                        fwrite(buffer,1,4096,stdout);
-                        i=0;
-                    }
-                    buffer[i++]=*tp++;
-                }
+                tp = va_arg(list, char *);
+                i = print_strchar(tp, i, buffer);
+            }
+            if(ch == 'c')
+            {
+                c = va_arg(list, int);
+                i = 1;
             }
         } 
         else buffer[i++] = ch;
         format++;
     }
     va_end(list);
-    fwrite(buffer,1,i,stdout);
+    write(1, buffer, i);
 }
 
 int main()
 {
-    ft_printf("%d", 3);
+    ft_printf("Hello %s %i","kishore", -111);
     write(1, "\n", 1);
-    printf("%d", 3);
+    printf("Hello %s %i","kishore", -143);
     return 0;
 }

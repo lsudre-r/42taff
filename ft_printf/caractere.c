@@ -14,16 +14,28 @@
 #include <stdio.h>
 #include <unistd.h>
 
+int get_int_len(int value)
+{
+	int l = 1;
+	while(value > 9)
+	{
+		l++; 
+		value /= 10;
+	}
+	return l;
+}
+
 int print_int(int val, char *buffer, int pos)
 {
     char s[30];
     int i;
-    if(val < 0)
-        i = 2;
-	else
-		i = 0;
+	i = 0;
     while(val)
     {
+		if(val < 0)
+		{
+			val =~ val + 1;
+		}
         s[i++] = val % 10 + '0';
         val /= 10;
     }
@@ -47,13 +59,22 @@ int print_strchar(char *tp, int i, char *buffer)
         {
             write(1, buffer, 4096);
             i = 0;
-            printf("ewefwe");
         }
         buffer[i++]=*tp++;
     }
     return(i);
 }
 
+int print_char(char c, int i, char *buffer)
+{
+	if(i == 4096)
+	{
+		write(1, buffer, 4096);
+		i = 0;
+	}
+    buffer[i] = c;
+    return(i);
+}
 
 void ft_printf(const char * format ,...)
 {
@@ -88,7 +109,7 @@ void ft_printf(const char * format ,...)
             if(ch == 'c')
             {
                 c = va_arg(list, int);
-                i = 1;
+                i = print_char(c, i, buffer);
             }
         } 
         else buffer[i++] = ch;
@@ -100,8 +121,9 @@ void ft_printf(const char * format ,...)
 
 int main()
 {
-    ft_printf("Hello %s %i","kishore", -111);
+	char c = 45;
+    ft_printf("Hello %s %c","kishore", c);
     write(1, "\n", 1);
-    printf("Hello %s %i","kishore", -143);
+    printf("Hello %s %c","kishore", c);
     return 0;
 }

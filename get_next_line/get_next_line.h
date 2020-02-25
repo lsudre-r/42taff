@@ -20,8 +20,12 @@
 #  define BUFFER_SIZE 64
 # endif
 
-# define MAX_FD 1024
+# define MAX_FD 1023
 
-int				get_next_line(int const fd, char **line);
+size_t	ft_strlen(const char *str);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+char	*ft_strdup(const char *s);
+char	*ft_strjoin(char const *s1, char const *s2);
+int		get_next_line(int const fd, char **line);
 
 #endif

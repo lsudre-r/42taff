@@ -50,9 +50,30 @@ int print_int(int val, char *buffer, int pos)
     return(pos);
 }
 
-int print_strchar(char *tp, int i, char *buffer)
+int print_uint(unsigned int val, char *buffer, int pos)
 {
-    while(*tp)
+    char s[30];
+    int i;
+	i = 0;
+    while(val)
+    {
+        s[i++] = val % 10 + '0';
+        val /= 10;
+    }
+    i--;
+    if(pos + i > 4096)
+    {
+        write(1, buffer, 4096);
+        pos = 0;
+    }
+    while(i >= 0)
+        buffer[pos++] = s[i--];
+    return(pos);
+}
+
+int print_strchar(char *s, int i, char *buffer)
+{
+    while(*s)
     {
         
         if(i==4096)
@@ -60,30 +81,32 @@ int print_strchar(char *tp, int i, char *buffer)
             write(1, buffer, 4096);
             i = 0;
         }
-        buffer[i++]=*tp++;
+        buffer[i++]=*s++;
     }
     return(i);
 }
 
-int print_char(char c, int i, char *buffer)
-{
-	if(i == 4096)
-	{
-		write(1, buffer, 4096);
-		i = 0;
-	}
-    buffer[i] = c;
-    return(i);
-}
+// int print_char(void *c, int i, char *buffer)
+// {
+// 	if(i == 4096)
+// 	{
+// 		write(1, buffer, 4096);
+// 		i = 0;
+// 	}
+// 	i++;
+//     return(i);
+// }
 
 void ft_printf(const char * format ,...)
 {
     char buffer[4096];
-    char ch;
-    char *tp;
-    char c;
+
     va_list list;
     va_start(list,format);
+    char ch;
+    char *s;
+    // void *c;
+    unsigned int u;
     int val;
     int i = 0;
     while((ch=*format))
@@ -103,13 +126,19 @@ void ft_printf(const char * format ,...)
             }
             if(ch == 's')
             {
-                tp = va_arg(list, char *);
-                i = print_strchar(tp, i, buffer);
+                s = va_arg(list, char *);
+                i = print_strchar(s, i, buffer);
             }
             if(ch == 'c')
             {
-                c = va_arg(list, int);
-                i = print_char(c, i, buffer);
+                // c = va_arg(list, void *);
+                // i = print_char(c, i, buffer);
+				i++;
+            }
+            if(ch == 'u')
+            {
+				u = va_arg(list, unsigned int);
+				i = print_uint(u, buffer, i);
             }
         } 
         else buffer[i++] = ch;
@@ -121,9 +150,10 @@ void ft_printf(const char * format ,...)
 
 int main()
 {
+	unsigned int u = 4294775945;
 	char c = 45;
-    ft_printf("Hello %s %c","kishore", c);
+    ft_printf("Hello %s %u %c","kishore", u, c);
     write(1, "\n", 1);
-    printf("Hello %s %c","kishore", c);
+    printf("Hello %s %u %c","kishore", u, c);
     return 0;
 }

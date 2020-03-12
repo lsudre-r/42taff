@@ -9,10 +9,10 @@
 /*   Updated: 2020/02/10 15:25:04 by lsudre-r         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <stdlib.h>
 
 int get_int_len(int value)
 {
@@ -75,7 +75,6 @@ int print_strchar(char *s, int i, char *buffer)
 {
     while(*s)
     {
-        
         if(i==4096)
         {
             write(1, buffer, 4096);
@@ -86,14 +85,72 @@ int print_strchar(char *s, int i, char *buffer)
     return(i);
 }
 
-// int print_char(void *c, int i, char *buffer)
+char	*ft_itoa(int n)
+{
+	char			*ret;
+	size_t			len;
+	int				sign;
+	unsigned int	nb;
+
+	sign = (n < 0) ? 1 : 0;
+	if (sign == 1)
+		nb = -n;
+	else
+		nb = n;
+	len = get_int_len(nb) + sign;
+	ret = (char *)malloc(sizeof(char) * len + 1);
+	if (ret == NULL)
+		return (NULL);
+	ret[len] = '\0';
+	while (len-- > (unsigned int)sign)
+	{
+		ret[len] = nb % 10 + '0';
+		nb /= 10;
+	}
+	if (sign == 1)
+		ret[len] = '-';
+	return (ret);
+}
+
+int print_char(int c, int i, char *buffer)
+{
+    char a;
+    if(i==4096)
+    {
+        write(1, buffer, 4096);
+        i = 0;
+    }
+    a = *ft_itoa(c);
+	buffer[i] = c;
+    i++;
+    return(i);
+}
+
+int print_percent(int i, char *buffer)
+{
+	char a;
+    if(i==4096)
+    {
+        write(1, buffer, 4096);
+        i = 0;
+    }
+    a = 37;
+	buffer[i] = a;
+    i++;
+    return(i);
+}
+
+// void *print_ptr(void ptr, int i, char *buffer)
 // {
-// 	if(i == 4096)
-// 	{
-// 		write(1, buffer, 4096);
-// 		i = 0;
-// 	}
-// 	i++;
+//     while(*ptr)
+//     {
+//         if(i==4096)
+//         {
+//             write(1, buffer, 4096);
+//             i = 0;
+//         }
+//         buffer[i++]=*ptr++;
+//     }
 //     return(i);
 // }
 
@@ -105,9 +162,10 @@ void ft_printf(const char * format ,...)
     va_start(list,format);
     char ch;
     char *s;
-    // void *c;
+    char c;
     unsigned int u;
     int val;
+    void *ptr;
     int i = 0;
     while((ch=*format))
     {
@@ -119,6 +177,11 @@ void ft_printf(const char * format ,...)
         if(ch == '%')
         {
             ch = *++(format);
+            if(ch == '%')
+            {
+                c = va_arg(list, int);
+                i = print_percent(i, buffer);
+            }
             if(ch == 'd' || ch == 'i')
             {
                 val = va_arg(list, int);
@@ -131,15 +194,19 @@ void ft_printf(const char * format ,...)
             }
             if(ch == 'c')
             {
-                // c = va_arg(list, void *);
-                // i = print_char(c, i, buffer);
-				i++;
+                c = va_arg(list, int);
+                i = print_char(c, i, buffer);
             }
             if(ch == 'u')
             {
 				u = va_arg(list, unsigned int);
 				i = print_uint(u, buffer, i);
             }
+            // if(ch == 'p')
+            // {
+            //     ptr = va_arg(list, void);
+            //     i = print_ptr(ptr, i, buffer);
+            // }
         } 
         else buffer[i++] = ch;
         format++;
@@ -151,9 +218,14 @@ void ft_printf(const char * format ,...)
 int main()
 {
 	unsigned int u = 4294775945;
-	char c = 45;
-    ft_printf("Hello %s %u %c","kishore", u, c);
+	int c = 56;
+    int c1 = 45;
+	int a=10;
+	int* ptr =&a;
+    // ft_printf("Hello %% %s %s %u %c %%", "sdsd", "kishore", u, c);
     write(1, "\n", 1);
-    printf("Hello %s %u %c","kishore", u, c);
+    printf("Hello %% %.09s %s %u %c %% %p", "sdsd", "kishore", u, c, ptr);
+	write(1, "\n", 1);
+	printf("%.09s", "kishore");
     return 0;
 }

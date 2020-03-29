@@ -12,10 +12,34 @@
 
 #include "printf.h"
 
+
+// int print_ptr(void *val, char *buffer, int pos)
+// {
+// 	// faire fonctionner pour les hexa
+// 	char s[30];
+// 	int i;
+	
+// 	i = 0;
+// 	while(val)
+// 	{
+// 		s[i++] = val % 16 + '0';
+// 		val /= 10;
+// 	}
+// 	i--;
+// 	if(pos + i > 4096)
+// 	{
+// 		write(1, buffer, 4096);
+// 		pos = 0;
+// 	}
+// 	while(i >= 0)
+// 		buffer[pos++] = s[i--];
+// 	return(pos);
+// }
+
+
 void ft_printf(const char * format ,...)
 {
-    char buffer[4096];
-
+	char buffer[4096];
     va_list list;
     va_start(list,format);
     char ch;

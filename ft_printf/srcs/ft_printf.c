@@ -12,20 +12,6 @@
 
 #include "printf.h"
 
-// void *print_ptr(void ptr, int i, char *buffer)
-// {
-//     while(*ptr)
-//     {
-//         if(i==4096)
-//         {
-//             write(1, buffer, 4096);
-//             i = 0;
-//         }
-//         buffer[i++]=*ptr++;
-//     }
-//     return(i);
-// }
-
 void ft_printf(const char * format ,...)
 {
     char buffer[4096];
@@ -37,7 +23,7 @@ void ft_printf(const char * format ,...)
     char c;
     unsigned int u;
     int val;
-    void *ptr;
+//    void *ptr;
     int i = 0;
     while((ch=*format))
     {
@@ -51,7 +37,6 @@ void ft_printf(const char * format ,...)
             ch = *++(format);
             if(ch == '%')
             {
-                c = va_arg(list, int);
                 i = print_percent(i, buffer);
             }
             if(ch == 'd' || ch == 'i')
@@ -74,11 +59,11 @@ void ft_printf(const char * format ,...)
 				u = va_arg(list, unsigned int);
 				i = print_uint(u, buffer, i);
             }
-            // if(ch == 'p')
-            // {
-            //     ptr = va_arg(list, void);
-            //     i = print_ptr(ptr, i, buffer);
-            // }
+//            if(ch == 'p')
+  //          {
+	//			ptr = va_arg(list, void);
+	//			i = print_ptr(ptr, i, buffer);
+	//		}
         } 
         else buffer[i++] = ch;
         format++;

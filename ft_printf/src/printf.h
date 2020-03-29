@@ -11,16 +11,18 @@
 /* ************************************************************************** */
 
 #ifndef PRINTF_H
-# define PRINTF_H
+#	define PRINTF_H
 
 #include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
 
-void    ft_printf(const char * format ,...);
+
+int 	fill_buffer(int i, char *buffer);
+void	ft_printf(const char * format ,...);
 char	*ft_itoa(int n);
-int     print_percent(int i, char *buffer);
+int		print_percent(int i, char *buffer);
 int		print_char(int c, int i, char *buffer);
 int		print_int(int val, char *buffer, int pos);
 int		print_strchar(char *s, int i, char *buffer);

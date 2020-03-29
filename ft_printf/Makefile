@@ -4,7 +4,8 @@ NAME = printf.a
 
 DIR_S = src
 
-SOURCES = ft_itoa.c \
+SOURCES = fill_buffer.c \
+			ft_itoa.c \
 			ft_printf.c \
 			main.c \
 			print_char.c \
@@ -33,3 +34,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: clean fclean all re
+

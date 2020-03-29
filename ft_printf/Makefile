@@ -1,20 +1,31 @@
 CC = clang
 
 NAME = printf.a
-SRC =	ft_printf.c ft_itoa.c print_percent.c print_uint.c print_int.c print_strchar.c print_char.c main.c\
 
-OBJ = $(SRC:.c=.o)
+DIR_S = src
 
-CFLAGS = -I./
+SOURCES = ft_itoa.c \
+			ft_printf.c \
+			main.c \
+			print_char.c \
+			print_int.c \
+			print_percent.c \
+			print_strchar.c \
+			print_uint.c \
+
+
+OBJS = $(addprefix $(DIR_S)/,$(SOURCES:.c=.o))
+
+CFLAGS = -I./src/
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-		ar rc $(NAME) $(OBJ)
+$(NAME): $(OBJS)
+		ar rc $(NAME) $(OBJS)
 		ranlib $(NAME)
 
 clean:
-		/bin/rm -f $(OBJ)
+		/bin/rm -f $(OBJS)
 
 fclean: clean
 		/bin/rm -f $(NAME)

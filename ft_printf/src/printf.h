@@ -18,6 +18,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+void    ft_printf(const char * format ,...);
 char	*ft_itoa(int n);
 int     print_percent(int i, char *buffer);
 int		print_char(int c, int i, char *buffer);

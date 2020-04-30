@@ -4,7 +4,11 @@ int print_strchar(char *s, int i, char *buffer)
 {
 	while(*s && s)
 	{
-		fill_buffer(i, buffer);
+		if(i==4096)
+		{
+			write(1, buffer, 4096);
+			i = 0;
+		}
 		buffer[i++]=*s++;
 	}
 	return(i);

@@ -4,12 +4,11 @@ int print_strchar(char *s, int i, char *buffer)
 {
 	while(*s && s)
 	{
-		if(i==4096)
-		{
-			write(1, buffer, 4096);
-			i = 0;
-		}
+		check_buffer(i, buffer);
 		buffer[i++]=*s++;
 	}
 	return(i);
 }
+// itoatobuffer
+// fill_buffer --> pointer sur struc buffer et buffer et int 
+// fonction initialisation -> mettre tout a 0 bzero

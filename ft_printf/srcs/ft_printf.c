@@ -12,6 +12,22 @@
 
 #include "printf.h"
 
+// typedef struct	s_buffer
+// {
+// 	char		buf[4096];
+// 	int			i;
+// 	int			size;
+// }	t_buffer;
+
+// int print_ptr(void *ptr, int i, char *buffer)
+// {
+// 	while(ptr)
+// 	{
+// 		fill_buffer(i, buffer);
+// 		buffer[i++] = ptr++;
+// 	}
+// 	return(i);
+// }
 
 // int print_ptr(void *val, char *buffer, int pos)
 // {
@@ -37,61 +53,60 @@
 // }
 
 
-void ft_printf(const char * format ,...)
+int ft_printf(const char * format ,...)
 {
 	char buffer[4096];
-    va_list list;
-    va_start(list,format);
-    char ch;
-    char *s;
-    char c;
-    unsigned int u;
-    int val;
-//    void *ptr;
-    int i = 0;
-    while((ch=*format))
-    {
-        if(i == 4096)
-        {
-            write(1, buffer, 4096);
-            i = 0;
-        }
-        if(ch == '%')
-        {
-            ch = *++(format);
-            if(ch == '%')
-            {
-                i = print_percent(i, buffer);
-            }
-            if(ch == 'd' || ch == 'i')
-            {
-                val = va_arg(list, int);
-                i = print_int(val, buffer, i);
-            }
-            if(ch == 's')
-            {
-                s = va_arg(list, char *);
-                i = print_strchar(s, i, buffer);
-            }
-            if(ch == 'c')
-            {
-                c = va_arg(list, int);
-                i = print_char(c, i, buffer);
-            }
-            if(ch == 'u')
-            {
+	va_list list;
+	va_start(list,format);
+	char ch;
+	char *s;
+	char c;
+	unsigned int u;
+	int val;
+	//void *ptr;
+	int i = 0;
+	while((ch = *format))
+	{
+		if(i == 4096)
+		{
+			write(1, buffer, 4096);
+			i = 0;
+		}
+		if(ch == '%')
+		{
+			ch = *++(format);
+			if(ch == '%')
+				i = print_percent(i, buffer);
+			if(ch == 'd' || ch == 'i')
+			{
+				val = va_arg(list, int);
+				i = print_int(val, buffer, i);
+			}
+			if(ch == 's')
+			{
+				s = va_arg(list, char *);
+				i = print_strchar(s, i, buffer);
+			}
+			if(ch == 'c')
+			{
+				c = va_arg(list, int);
+				i = print_char(c, i, buffer);
+			}
+			if(ch == 'u')
+			{
 				u = va_arg(list, unsigned int);
 				i = print_uint(u, buffer, i);
-            }
-//            if(ch == 'p')
-  //          {
-	//			ptr = va_arg(list, void);
-	//			i = print_ptr(ptr, i, buffer);
-	//		}
-        } 
-        else buffer[i++] = ch;
-        format++;
-    }
-    va_end(list);
-    write(1, buffer, i);
+			}
+			// if(ch == 'p')
+			// {
+			//     ptr = va_arg(list, void*);
+			//     i = print_ptr(ptr, i, buffer);
+			// }
+		} 
+		else buffer[i++] = ch;
+		format++;
+	}
+	va_end(list);
+	write(1, buffer, i);
+	return (0);
 }

@@ -11,6 +11,7 @@ FILES = ft_itoa \
 			print_percent \
 			print_strchar \
 			print_uint \
+			check_buffer \
 
 SRC = $(addsuffix .c, $(FILES))
 

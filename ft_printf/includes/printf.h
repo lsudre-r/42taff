@@ -19,8 +19,9 @@
 #include <stdlib.h>
 
 
-int 	fill_buffer(int i, char *buffer);
-void	ft_printf(const char * format ,...);
+int     check_buffer(int i, char *buffer);
+//int 	fill_buffer(int i, char *buffer);
+int	ft_printf(const char * format ,...);
 char	*ft_itoa(int n);
 int		print_percent(int i, char *buffer);
 int		print_char(int c, int i, char *buffer);

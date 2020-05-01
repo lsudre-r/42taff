@@ -12,3 +12,4 @@ int print_strchar(char *s, int i, char *buffer)
 // itoatobuffer
 // fill_buffer --> pointer sur struc buffer et buffer et int 
 // fonction initialisation -> mettre tout a 0 bzero
+// int 	fill_buffer(int i, char *buffer);

@@ -12,12 +12,12 @@
 
 #include "printf.h"
 
-// typedef struct	s_buffer
-// {
-// 	char		buf[4096];
-// 	int			i;
-// 	int			size;
-// }	t_buffer;
+typedef struct	s_buffer
+{
+	char		buf[4096];
+	int			i;
+	int			size;
+}	t_buffer;
 
 // int print_ptr(void *ptr, int i, char *buffer)
 // {

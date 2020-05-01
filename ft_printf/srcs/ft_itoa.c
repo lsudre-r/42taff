@@ -1,16 +1,5 @@
 #include "printf.h"
 
-int get_int_len(int value)
-{
-	int l = 1;
-	while(value > 9)
-	{
-		l++; 
-		value /= 10;
-	}
-	return l;
-}
-
 char	*ft_itoa(int n)
 {
 	char			*ret;
@@ -23,12 +12,12 @@ char	*ft_itoa(int n)
 		nb = -n;
 	else
 		nb = n;
-	len = get_int_len(nb) + sign;
+	len = ft_getintlen(nb) + sign;
 	ret = (char *)malloc(sizeof(char) * len + 1);
 	if (ret == NULL)
 		return (NULL);
 	ret[len] = '\0';
-	while (len-- > (unsigned int)sign)
+	while (len--> (unsigned int)sign)
 	{
 		ret[len] = nb % 10 + '0';
 		nb /= 10;

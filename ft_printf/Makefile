@@ -4,14 +4,16 @@ NAME = printf.a
 
 FLAGS = -Werror -Wextra -Wall -g3 -fsanitize=address
 
-FILES = ft_itoa \
-			ft_printf \
+FILES = check_buffer \
+			ft_getintlen \
+			ft_itoa \
+			ft_itoatobuffer \
 			print_char \
 			print_int \
 			print_percent \
 			print_strchar \
 			print_uint \
-			check_buffer \
+			ft_printf \
 
 SRC = $(addsuffix .c, $(FILES))
 

@@ -6,6 +6,8 @@ FLAGS = -Werror -Wextra -Wall -g3 -fsanitize=address
 
 FILES = check_buffer \
 			ft_getintlen \
+			ft_nbchelou \
+			ft_itoabasetobuffer \
 			ft_itoa \
 			ft_itoatobuffer \
 			print_char \

@@ -20,3 +20,5 @@ int print_uint(unsigned int val, char *buffer, int pos)
 		buffer[pos++] = s[i--];
 	return(pos);
 }
+
+//NE FONCTIONNE PAS AVEC 0 FOR SOME OBSCURE REASON

@@ -19,15 +19,17 @@
 #include <stdlib.h>
 
 
-int     check_buffer(int i, char *buffer);
-int     ft_getintlen(int value);
+int		check_buffer(int i, char *buffer);
+char	*ft_nbchelou(int value, char *buffer, int i);
+char	*ft_itoabasetobuffer(int value, char* buffer, int base, int i);
+int		ft_getintlen(int value);
 int		ft_itoatobuffer(int n, char *buffer, int i);
 char	*ft_itoa(int n);
 int		print_percent(int i, char *buffer);
 int		print_char(int c, int i, char *buffer);
-int		print_int(int val, char *buffer, int pos);
+int		print_int(int value, char *buffer, int i);
+int		print_uint(unsigned int value, char *buffer, int i);
 int		print_strchar(char *s, int i, char *buffer);
-int		print_uint(unsigned int val, char *buffer, int pos);
-int	    ft_printf(const char * format ,...);
+int		ft_printf(const char * format ,...);
 
 #endif

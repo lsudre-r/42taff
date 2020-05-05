@@ -2,7 +2,6 @@
 
 int		ft_itoatobuffer(int n, char *buffer, int i)
 {
-	int				a;
 	size_t			len;
 	int				sign;
 	unsigned int	nb;
@@ -12,15 +11,14 @@ int		ft_itoatobuffer(int n, char *buffer, int i)
 		nb = -n;
 	else
 		nb = n;
-	len = ft_getintlen(nb) + sign;
-	a = len;
+	len = ft_getintlen(nb) + sign + i;
 	buffer[i + len] = '\0';
-	while (len-- > (unsigned int)sign)
+	while (len-- > ((unsigned int)sign + i))
 	{
-		buffer[i + len] = nb % 10 + '0';
+		buffer[len] = nb % 10 + '0';
 		nb /= 10;
 	}
 	if (sign == 1)
-		buffer[i + len] = '-';
-	return (i + a);
+		buffer[len] = '-';
+	return (len);
 }

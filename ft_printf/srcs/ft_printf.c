@@ -63,6 +63,7 @@ int ft_printf(const char * format ,...)
 	char c;
 	unsigned int u;
 	int val;
+	int hexm;
 	//void *ptr;
 	int i = 0;
 	while((ch = *format))
@@ -97,11 +98,11 @@ int ft_printf(const char * format ,...)
 				u = va_arg(list, unsigned int);
 				i = print_uint(u, buffer, i);
 			}
-			// if(ch == 'p')
-			// {
-			//     ptr = va_arg(list, void*);
-			//     i = print_ptr(ptr, i, buffer);
-			// }
+			if(ch == 'X')
+			{
+			    hexm = va_arg(list, int);
+			    i = print_hexm(hexm, buffer, i);
+			}
 		} 
 		else buffer[i++] = ch;
 		format++;

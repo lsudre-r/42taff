@@ -5,6 +5,10 @@ NAME = printf.a
 FLAGS = -Werror -Wextra -Wall -g3 -fsanitize=address
 
 FILES = check_buffer \
+			ft_swap \
+			ft_tolower \
+			ft_reverseNlower \
+			ft_reverse \
 			ft_getintlen \
 			ft_nbchelou \
 			ft_itoabasetobuffer \
@@ -15,6 +19,7 @@ FILES = check_buffer \
 			print_percent \
 			print_strchar \
 			print_uint \
+			print_hexm \
 			ft_printf \
 
 SRC = $(addsuffix .c, $(FILES))

@@ -2,13 +2,9 @@
 
 int main()
 {
-	unsigned int u = 6548846;
-	int a = 2147483647;
-	int b = 2147483647;
-	int c = 2147483647;
-	int d = 2147483647;
-    ft_printf("1Helo %% %u %d %% %i %d %i %%\n", u, a, b, c, d);
-	printf("2Helo %% %u %d %% %i %d %i %%\n", u, a, b, c, d);
+	int a = 75684;
+    ft_printf("1Helo %% %X %%\n", a);
+	printf("2Helo %% %X %%\n", a);
     return 0;
 }
 

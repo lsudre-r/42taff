@@ -11,6 +11,7 @@ FILES = check_buffer \
 			ft_reverse \
 			ft_getintlen \
 			ft_nbchelou \
+			ft_itoabasetobufferm \
 			ft_itoabasetobuffer \
 			ft_itoa \
 			ft_itoatobuffer \
@@ -19,7 +20,8 @@ FILES = check_buffer \
 			print_percent \
 			print_strchar \
 			print_uint \
-			print_hexm \
+			print_bighex \
+			print_smallhex \
 			ft_printf \
 
 SRC = $(addsuffix .c, $(FILES))

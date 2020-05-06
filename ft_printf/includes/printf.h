@@ -25,6 +25,7 @@ int		ft_tolower(int c);
 char	*ft_reverseNlower(char *buffer, int i, int j);
 char	*ft_reverse(char *buffer, int i, int j);
 char	*ft_nbchelou(int value, char *buffer, int i);
+char    *ft_itoabasetobufferm(int value, char* buffer, int base, int i);
 char	*ft_itoabasetobuffer(int value, char* buffer, int base, int i);
 int		ft_getintlen(int value);
 int		ft_itoatobuffer(int n, char *buffer, int i);
@@ -34,7 +35,8 @@ int		print_char(int c, int i, char *buffer);
 int		print_int(int value, char *buffer, int i);
 int		print_uint(unsigned int value, char *buffer, int i);
 int		print_strchar(char *s, int i, char *buffer);
-int 	print_hexm(int hex, char *buffer, int i);
+int     print_bighex(int hex, char *buffer, int i);
+int 	print_smallhex(int hex, char *buffer, int i);
 int		ft_printf(const char * format ,...);
 
 #endif

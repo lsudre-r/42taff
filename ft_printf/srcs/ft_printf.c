@@ -19,52 +19,18 @@ typedef struct	s_buffer
 	int			size;
 }	t_buffer;
 
-// int print_ptr(void *ptr, int i, char *buffer)
-// {
-// 	while(ptr)
-// 	{
-// 		fill_buffer(i, buffer);
-// 		buffer[i++] = ptr++;
-// 	}
-// 	return(i);
-// }
-
-// int print_ptr(void *val, char *buffer, int pos)
-// {
-// 	// faire fonctionner pour les hexa
-// 	char s[30];
-// 	int i;
-	
-// 	i = 0;
-// 	while(val)
-// 	{
-// 		s[i++] = val % 16 + '0';
-// 		val /= 10;
-// 	}
-// 	i--;
-// 	if(pos + i > 4096)
-// 	{
-// 		write(1, buffer, 4096);
-// 		pos = 0;
-// 	}
-// 	while(i >= 0)
-// 		buffer[pos++] = s[i--];
-// 	return(pos);
-// }
-
-
 int ft_printf(const char * format ,...)
 {
-	char buffer[4096];
-	va_list list;
+	char			buffer[4096];
+	va_list 		list;
+	char 			ch;
+	char 			*s;
+	char 			c;
+	unsigned int	u;
+	int 			val;
+	int 			bighex;
+	int 			smallhex;
 	va_start(list,format);
-	char ch;
-	char *s;
-	char c;
-	unsigned int u;
-	int val;
-	int hexm;
-	//void *ptr;
 	int i = 0;
 	while((ch = *format))
 	{
@@ -100,8 +66,13 @@ int ft_printf(const char * format ,...)
 			}
 			if(ch == 'X')
 			{
-			    hexm = va_arg(list, int);
-			    i = print_hexm(hexm, buffer, i);
+				bighex = va_arg(list, int);
+				i = print_bighex(bighex, buffer, i);
+			}
+			if(ch == 'x')
+			{
+				smallhex = va_arg(list, int);
+				i = print_smallhex(smallhex, buffer, i);
 			}
 		} 
 		else buffer[i++] = ch;

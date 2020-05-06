@@ -3,8 +3,8 @@
 int main()
 {
 	int a = 75684;
-    ft_printf("1Helo %% %X %%\n", a);
-	printf("2Helo %% %X %%\n", a);
+    ft_printf("1Helo %% %x %%\n", a);
+	printf("2Helo %% %x %%\n", a);
     return 0;
 }
 

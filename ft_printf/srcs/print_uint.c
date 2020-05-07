@@ -1,6 +1,6 @@
 #include "printf.h"
 
-int print_uint(unsigned int val, char *buffer, int pos)
+char *fonc(unsigned int val, char *buffer, int pos)
 {
 	char s[30];
 	int i;
@@ -18,7 +18,18 @@ int print_uint(unsigned int val, char *buffer, int pos)
 	}
 	while(i >= 0)
 		buffer[pos++] = s[i--];
-	return(pos);
+	return(buffer);
 }
 
-//NE FONCTIONNE PAS AVEC 0 FOR SOME OBSCURE REASON
+int print_uint(unsigned int val, char *buffer, int pos)
+{
+	check_buffer(pos, buffer);
+	if (val == 0)
+		buffer = ft_nbchelou(val, buffer, pos);
+	else
+	{
+		buffer = fonc(val, buffer, pos);
+	}
+	pos = pos + 15;
+	return(pos);
+}

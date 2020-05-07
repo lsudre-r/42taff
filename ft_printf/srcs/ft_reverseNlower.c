@@ -2,6 +2,7 @@
 
 char* ft_reverseNlower(char *buffer, int i, int j)
 {
+	buffer[i] = ft_tolower(buffer[i]);
 	while (i < j)
 	{
 		buffer[i] = ft_tolower(buffer[i]);

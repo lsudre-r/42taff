@@ -2,9 +2,11 @@
 
 int main()
 {
-	unsigned int a = 4294967295;
-    ft_printf("1Helo %% %u %%\n", a);
-	printf("2Helo %% %u %%\n", a);
+	int a = 12;
+    int *b = &a;
+
+    ft_printf("1Helo %% %x %X %%\n", a, a);
+	printf("2Helo %% %x %X %p %%\n", b, b, b);
     return 0;
 }
 

@@ -18,15 +18,23 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+#define BUFFER_SIZE 4096
 
-int		check_buffer(int i, char *buffer);
+typedef struct	s_buffer
+{
+	char		buf[BUFFER_SIZE];
+	int			i;
+	int			size;
+}	t_buffer;
+
+int		check_buffer(int *i, char *buffer);
 void 	ft_swap(char *x, char *y);
 int		ft_tolower(int c);
 char	*ft_reverseNlower(char *buffer, int i, int j);
 char	*ft_reverse(char *buffer, int i, int j);
 char	*ft_nbchelou(int value, char *buffer, int i);
 char    *ft_itoabasetobufferm(int value, char* buffer, int base, int i);
-char	*ft_itoabasetobuffer(int value, char* buffer, int base, int i);
+char	*ft_itoabasetobuffer(unsigned int value, char* buffer, int base, int i);
 int		ft_getintlen(int value);
 int		ft_itoatobuffer(int n, char *buffer, int i);
 char	*ft_itoa(int n);

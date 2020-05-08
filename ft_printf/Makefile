@@ -43,7 +43,7 @@ HEADERS = includes/printf.h \
 all: $(NAME)
 
 test:
-	$(COMPILATEUR) ./main.c $(NAME) $(INCLUDES) $(FLAGS)
+	$(COMPILATEUR) ./main.c $(NAME) $(INCLUDES) -fsanitize=address -g3
 
 $(NAME): create_dir $(OBJS) $(HEADERS)
 	@printf  "\033[92m\033[1:32mCompiling -------------> \033[91m$(NAME)\033[0m:\033[0m%-16s\033[32m[✔]\033[0m\n"

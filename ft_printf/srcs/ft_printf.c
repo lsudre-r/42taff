@@ -12,13 +12,6 @@
 
 #include "printf.h"
 
-typedef struct	s_buffer
-{
-	char		buf[4096];
-	int			i;
-	int			size;
-}	t_buffer;
-
 int ft_printf(const char * format ,...)
 {
 	char			buffer[4096];
@@ -30,6 +23,9 @@ int ft_printf(const char * format ,...)
 	int 			val;
 	int 			bighex;
 	int 			smallhex;
+	t_buffer		buf;
+	
+	ft_bzero(&buf, sizeof(buf));
 	va_start(list,format);
 	int i = 0;
 	while((ch = *format))

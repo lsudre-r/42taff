@@ -1,8 +1,8 @@
 #include "printf.h"
 
-char* ft_itoabasetobuffer(int value, char* buffer, int base, int i)
+char* ft_itoabasetobuffer(unsigned int value, char* buffer, int base, int i)
 {
-	int		n;
+	unsigned int	n;
 	int		r;
 	int		d;
 
@@ -21,6 +21,9 @@ char* ft_itoabasetobuffer(int value, char* buffer, int base, int i)
 		buffer[i++] = '0';
 	if (value < 0 && base == 10)
 		buffer[i++] = '-';
-	buffer[i] = '\0';
 	return (ft_reverse(buffer, d , i - 1));
 }
+
+//pour les hex refaire une fonctioin to faire les int
+//remplacer avec fill buffer
+//mettre struct dans le fonction

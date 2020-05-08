@@ -24,3 +24,5 @@ char* ft_itoabasetobufferm(int value, char* buffer, int base, int i)
 	buffer[i] = '\0';
 	return (ft_reverseNlower(buffer, d , i - 1));
 }
+
+//le faire avancer a lenver

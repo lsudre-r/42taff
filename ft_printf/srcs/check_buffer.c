@@ -1,11 +1,12 @@
 #include "printf.h"
 
-int	check_buffer(int i, char *buffer)
+int	check_buffer(int *i, char *buffer)
 {
-	if(i==4096)
+	if(*i==4096)
 	{
 		write(1, buffer, 4096);
-		i = 0;
+		*i = 0;
+		ft_bzero(buffer, BUFFER_SIZE);
 	}
 	return (0);
 }

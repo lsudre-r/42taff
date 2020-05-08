@@ -1,11 +1,7 @@
 #include "printf.h"
 
-int print_percent(int i, char *buffer)
+int print_percent(t_buffer buffer)
 {
-	char a;
-	check_buffer(i, buffer);
-	a = 37;
-	buffer[i] = a;
-	i++;
-	return(i);
+	fill_buffer((&buffer), '%');
+	return((&buffer)->i);
 }

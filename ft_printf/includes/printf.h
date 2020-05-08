@@ -27,24 +27,25 @@ typedef struct	s_buffer
 	int			size;
 }	t_buffer;
 
-int		check_buffer(int *i, char *buffer);
+void	ft_bzero(void *s, size_t n);
+void	fill_buffer(t_buffer *buffer, char c);
 void 	ft_swap(char *x, char *y);
 int		ft_tolower(int c);
 char	*ft_reverseNlower(char *buffer, int i, int j);
 char	*ft_reverse(char *buffer, int i, int j);
-char	*ft_nbchelou(int value, char *buffer, int i);
-char    *ft_itoabasetobufferm(int value, char* buffer, int base, int i);
-char	*ft_itoabasetobuffer(unsigned int value, char* buffer, int base, int i);
-int		ft_getintlen(int value);
+char	*ft_nbchelou(int value, t_buffer buffer);
+char    *ft_itoaB2Bm(unsigned int value, t_buffer buffer, int base);
+char	*ft_itoaB2B(unsigned int value, t_buffer buffer, int base);
+int		ft_len_int(int value);
 int		ft_itoatobuffer(int n, char *buffer, int i);
 char	*ft_itoa(int n);
-int		print_percent(int i, char *buffer);
-int		print_char(int c, int i, char *buffer);
-int		print_int(int value, char *buffer, int i);
-int		print_uint(unsigned int value, char *buffer, int i);
-int		print_strchar(char *s, int i, char *buffer);
-int     print_bighex(int hex, char *buffer, int i);
-int 	print_smallhex(int hex, char *buffer, int i);
+int		print_percent(t_buffer buffer);
+int		print_char(int c, t_buffer buffer);
+int		print_int(int value, t_buffer buffer);
+int		print_uint(unsigned int value, t_buffer buffer);
+int		print_strchar(char *s, t_buffer buffer);
+int     print_bighex(int hex, t_buffer buffer);
+int 	print_smallhex(int hex, t_buffer buffer);
 int		ft_printf(const char * format ,...);
 
 #endif

@@ -14,7 +14,7 @@
 
 int ft_printf(const char * format ,...)
 {
-	char			buffer[4096];
+	//char			buffer[4096];
 	va_list 		list;
 	char 			ch;
 	char 			*s;
@@ -23,58 +23,58 @@ int ft_printf(const char * format ,...)
 	int 			val;
 	int 			bighex;
 	int 			smallhex;
-	t_buffer		buf;
-	
-	ft_bzero(&buf, sizeof(buf));
+	t_buffer		buffer;
+	ft_bzero(&buffer, sizeof(buffer));
 	va_start(list,format);
-	int i = 0;
 	while((ch = *format))
 	{
-		if(i == 4096)
+		if((&buffer)->i == 4096)
 		{
-			write(1, buffer, 4096);
-			i = 0;
+			write(1, (&buffer)->buf, 4096);
+			(&buffer)->i = 0;
 		}
 		if(ch == '%')
 		{
 			ch = *++(format);
 			if(ch == '%')
-				i = print_percent(i, buffer);
+				(&buffer)->i = print_percent(buffer);
 			if(ch == 'd' || ch == 'i')
 			{
 				val = va_arg(list, int);
-				i = print_int(val, buffer, i);
+				(&buffer)->i = print_int(val, buffer);
 			}
 			if(ch == 's')
 			{
 				s = va_arg(list, char *);
-				i = print_strchar(s, i, buffer);
+				(&buffer)->i = print_strchar(s, buffer);
 			}
 			if(ch == 'c')
 			{
 				c = va_arg(list, int);
-				i = print_char(c, i, buffer);
+				(&buffer)->i = print_char(c, buffer);
 			}
 			if(ch == 'u')
 			{
 				u = va_arg(list, unsigned int);
-				i = print_uint(u, buffer, i);
+				(&buffer)->i = print_uint(u, buffer);
 			}
 			if(ch == 'X')
 			{
 				bighex = va_arg(list, int);
-				i = print_bighex(bighex, buffer, i);
+				print_bighex(bighex, buffer);
 			}
 			if(ch == 'x')
 			{
 				smallhex = va_arg(list, int);
-				i = print_smallhex(smallhex, buffer, i);
+				print_smallhex(smallhex, buffer);
 			}
 		} 
-		else buffer[i++] = ch;
+		else
+			fill_buffer((&buffer), ch);
+			//buffer[i++] = ch;
 		format++;
 	}
 	va_end(list);
-	write(1, buffer, i);
+	write(1, (&buffer)->buf,(&buffer)->i);
 	return (0);
 }

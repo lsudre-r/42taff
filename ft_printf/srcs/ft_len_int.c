@@ -1,6 +1,6 @@
 #include "printf.h"
 
-int ft_getintlen(int value)
+int ft_len_int(int value)
 {
 	int l = 1;
 	while(value > 9)
@@ -8,5 +8,5 @@ int ft_getintlen(int value)
 		l++; 
 		value /= 10;
 	}
-	return l;
+	return (l);
 }

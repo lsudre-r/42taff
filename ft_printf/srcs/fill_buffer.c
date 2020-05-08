@@ -8,9 +8,9 @@ void	fill_buffer(t_buffer *buffer, char c)
 		buffer->i = 0;
 		ft_bzero(buffer->buf, BUFFER_SIZE);
 	}
-	check_buffer(buffer->i, buffer->buf);
 	buffer->buf[buffer->i] = c;
 	buffer->size++;
+	buffer->i++;
 }
 
 

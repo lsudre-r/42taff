@@ -1,14 +1,12 @@
 #include "printf.h"
 
-int print_int(int value, char *buffer, int i)
+int print_int(int value, t_buffer buffer)
 {
-	check_buffer(i, buffer);
 	if( value == 0 || value == (-2147483648))
-		buffer = ft_nbchelou(value, buffer, i);
+		ft_nbchelou(value, buffer);
 	else
-		buffer = ft_itoabasetobuffer(value, buffer, 10, i);
-	i = i + 15;
-	return (i);
+		ft_itoaB2B(value, buffer, 10);
+	return ((&buffer)->i);
 }
 
 // int print_int(int val, char *buffer, int pos)

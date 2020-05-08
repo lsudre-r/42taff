@@ -22,3 +22,5 @@ int		ft_itoatobuffer(int n, char *buffer, int i)
 		buffer[len] = '-';
 	return (len);
 }
+
+//a supp ?

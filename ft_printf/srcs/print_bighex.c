@@ -1,11 +1,10 @@
 #include "printf.h"
 
-int print_bighex(int hex, char *buffer, int i)
+int print_bighex(int hex, t_buffer buffer)
 {
 	if( hex == 0)
-		buffer = ft_nbchelou(hex, buffer, i);
+		ft_nbchelou(hex, buffer);
 	else
-		buffer = ft_itoabasetobuffer((unsigned int)hex, buffer, 16, i);
-	i = i + 15;
-	return (i);
+		ft_itoaB2B(hex, buffer, 16);
+	return ((&buffer)->i);
 }

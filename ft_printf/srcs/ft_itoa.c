@@ -12,7 +12,7 @@ char	*ft_itoa(int n)
 		nb = -n;
 	else
 		nb = n;
-	len = ft_getintlen(nb) + sign;
+	len = ft_len_int(nb) + sign;
 	ret = (char *)malloc(sizeof(char) * len + 1);
 	if (ret == NULL)
 		return (NULL);

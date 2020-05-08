@@ -2,7 +2,8 @@
 
 char* ft_itoaB2B(unsigned int value, t_buffer buffer, int base)
 {
-	unsigned long int	n;
+	
+	unsigned int	n;
 	int		r;
 	int		d;
 
@@ -29,5 +30,3 @@ char* ft_itoaB2B(unsigned int value, t_buffer buffer, int base)
 }
 
 //pour les hex refaire une fonctioin to faire les int
-//remplacer avec fill buffer
-//mettre struct dans le fonction

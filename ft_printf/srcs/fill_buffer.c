@@ -2,15 +2,15 @@
 
 void	fill_buffer(t_buffer *buffer, char c)
 {
-	if(buffer->i == 4096)
+	if(buffer->i == BUFFER_SIZE)
 	{
-		write(1, buffer->buf, 4096);
+		write(1, buffer->buf, BUFFER_SIZE);
 		buffer->i = 0;
 		ft_bzero(buffer->buf, BUFFER_SIZE);
 	}
 	buffer->buf[buffer->i] = c;
-	buffer->size++;
 	buffer->i++;
+	buffer->size++;
 }
 
 

@@ -4,22 +4,21 @@ NAME = printf.a
 
 FLAGS = -Werror -Wextra -Wall -g3 -fsanitize=address
 
-FILES = check_buffer \
+FILES = bzero_buffer \
+			fill_buffer \
 			ft_swap \
 			ft_tolower \
 			ft_reverseNlower \
 			ft_reverse \
-			ft_getintlen \
+			ft_len_int \
 			ft_nbchelou \
-			ft_itoabasetobufferm \
-			ft_itoabasetobuffer \
-			ft_itoa \
-			ft_itoatobuffer \
+			ft_itoaB2Bm \
+			ft_itoaB2B \
+			print_percent \
 			print_char \
 			print_int \
-			print_percent \
-			print_strchar \
 			print_uint \
+			print_strchar \
 			print_bighex \
 			print_smallhex \
 			ft_printf \

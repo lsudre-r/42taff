@@ -2,10 +2,8 @@
 
 int main()
 {
-	int b = -6514;
-
- ft_printf("1Helo %% %x %%\n", b);
-	printf("2Helo %% %0.8x %%\n", b);
+	printf("lol %%\n");
+	ft_printf("lil %%\n");
     return 0;
 }
 

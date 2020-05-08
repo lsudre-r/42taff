@@ -14,7 +14,6 @@
 
 int ft_printf(const char * format ,...)
 {
-	//char			buffer[4096];
 	va_list 		list;
 	char 			ch;
 	char 			*s;
@@ -28,11 +27,6 @@ int ft_printf(const char * format ,...)
 	va_start(list,format);
 	while((ch = *format))
 	{
-		if((&buffer)->i == 4096)
-		{
-			write(1, (&buffer)->buf, 4096);
-			(&buffer)->i = 0;
-		}
 		if(ch == '%')
 		{
 			ch = *++(format);

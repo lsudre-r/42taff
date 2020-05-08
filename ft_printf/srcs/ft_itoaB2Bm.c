@@ -1,6 +1,5 @@
 #include "printf.h"
 
-
 char* ft_itoaB2Bm(unsigned int value, t_buffer buffer, int base)
 {
 	unsigned long int	n;

@@ -1,6 +1,6 @@
 #include "printf.h"
 
-int	print_unit(unsigned int val, t_buffer buffer)
+int	print_uint(unsigned int val, t_buffer buffer)
 {
 	if( val == 0)
 		ft_nbchelou(val, buffer);

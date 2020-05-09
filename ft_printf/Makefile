@@ -12,7 +12,8 @@ FILES = bzero_buffer \
 			ft_reverse \
 			ft_len_int \
 			ft_nbchelou \
-			ft_itoaB2Bm \
+			ft_utoaB2Bm \
+			ft_utoaB2B \
 			ft_itoaB2B \
 			print_percent \
 			print_char \

@@ -2,9 +2,9 @@
 
 int main()
 {
-	int c = 647896;
-	printf("vrai %% : %X %%\n", c);
-	ft_printf("mien %% : %X %%\n", c);
+	int c = 21474647;
+	ft_printf("mien %i %% bliobloub\n", c);
+	printf("vrai %-i %% bliobloub\n", c);
     return 0;
 }
 

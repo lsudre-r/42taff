@@ -1,10 +1,11 @@
 #include "printf.h"
 
-void 	ft_itoaB2B(int value, t_buffer *buffer, int base)
+
+void ft_utoaB2B(unsigned int value, t_buffer *buffer, int base)
 {
-	unsigned int	n;
+	unsigned long int	n;
 	int		r;
-	char	s[56];
+	char	s[52];
 	int		pos;
 
 	pos = 0;
@@ -22,6 +23,7 @@ void 	ft_itoaB2B(int value, t_buffer *buffer, int base)
 		s[pos++] = '0';
 	if (value < 0 && base == 10)
 		s[pos++] = '-';
+	s[pos] = '\0';
 	while (pos >= 0)
 		fill_buffer(buffer, s[pos--]);
 }

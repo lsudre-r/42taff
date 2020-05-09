@@ -1,9 +1,8 @@
 #include "printf.h"
 
-int	print_char(int c, t_buffer buffer)
+void	print_char(int c, t_buffer *buffer)
 {
-	fill_buffer((&buffer), c);
-	return ((&buffer)->i);
+	fill_buffer(buffer, c);
 }
 
 // int print_char(int c, int i, char *buffer)

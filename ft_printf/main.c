@@ -2,8 +2,9 @@
 
 int main()
 {
-	printf("lol %%\n");
-	ft_printf("lil %%\n");
+	int c = 647896;
+	printf("vrai %% : %X %%\n", c);
+	ft_printf("mien %% : %X %%\n", c);
     return 0;
 }
 

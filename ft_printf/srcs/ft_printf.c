@@ -29,43 +29,43 @@ int ft_printf(const char * format ,...)
 	{
 		if(ch == '%')
 		{
+			
 			ch = *++(format);
 			if(ch == '%')
-				(&buffer)->i = print_percent(buffer);
+				print_percent(&buffer);
 			if(ch == 'd' || ch == 'i')
 			{
 				val = va_arg(list, int);
-				(&buffer)->i = print_int(val, buffer);
+				print_int(val, &buffer);
 			}
 			if(ch == 's')
 			{
 				s = va_arg(list, char *);
-				(&buffer)->i = print_strchar(s, buffer);
+				print_strchar(s, &buffer);
 			}
 			if(ch == 'c')
 			{
 				c = va_arg(list, int);
-				(&buffer)->i = print_char(c, buffer);
+				print_char(c, &buffer);
 			}
 			if(ch == 'u')
 			{
 				u = va_arg(list, unsigned int);
-				(&buffer)->i = print_uint(u, buffer);
+				print_uint(u, &buffer);
 			}
 			if(ch == 'X')
 			{
 				bighex = va_arg(list, int);
-				print_bighex(bighex, buffer);
+				print_bighex(bighex, &buffer);
 			}
 			if(ch == 'x')
 			{
 				smallhex = va_arg(list, int);
-				print_smallhex(smallhex, buffer);
+				print_smallhex(smallhex, &buffer);
 			}
 		} 
 		else
 			fill_buffer((&buffer), ch);
-			//buffer[i++] = ch;
 		format++;
 	}
 	va_end(list);

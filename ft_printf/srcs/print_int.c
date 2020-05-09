@@ -1,12 +1,11 @@
 #include "printf.h"
 
-int print_int(int value, t_buffer buffer)
+void	print_int(int value, t_buffer *buffer)
 {
 	if( value == 0 || value == (-2147483648))
 		ft_nbchelou(value, buffer);
 	else
 		ft_itoaB2B(value, buffer, 10);
-	return ((&buffer)->i);
 }
 
 // int print_int(int val, char *buffer, int pos)

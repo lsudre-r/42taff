@@ -34,16 +34,16 @@ int		ft_tolower(int c);
 char	*ft_reverseNlower(char *buffer, int i, int j);
 char	*ft_reverse(char *buffer, int i, int j);
 int		ft_len_int(int value);
-char	*ft_nbchelou(int value, t_buffer buffer);
-char    *ft_itoaB2Bm(unsigned int value, t_buffer buffer, int base);
-char	*ft_itoaB2B(unsigned int value, t_buffer buffer, int base);
-int		print_percent(t_buffer buffer);
-int		print_char(int c, t_buffer buffer);
-int		print_int(int value, t_buffer buffer);
-int		print_uint(unsigned int value, t_buffer buffer);
-int		print_strchar(char *s, t_buffer buffer);
-int     print_bighex(int hex, t_buffer buffer);
-int 	print_smallhex(int hex, t_buffer buffer);
+void	ft_nbchelou(int value, t_buffer *buffer);
+void    ft_itoaB2Bm(unsigned int value, t_buffer *buffer, int base);
+void	ft_itoaB2B(unsigned int value, t_buffer *buffer, int base);
+void	print_percent(t_buffer *buffer);
+void	print_char(int c, t_buffer *buffer);
+void	print_int(int value, t_buffer *buffer);
+void	print_uint(unsigned int value, t_buffer *buffer);
+void	print_strchar(char *s, t_buffer *buffer);
+void    print_bighex(int hex, t_buffer *buffer);
+void	print_smallhex(int hex, t_buffer *buffer);
 int		ft_printf(const char * format ,...);
 
 #endif

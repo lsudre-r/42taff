@@ -1,6 +1,6 @@
 #include "printf.h"
 
-char	*ft_nbchelou(int value, t_buffer buffer)
+void	ft_nbchelou(int value, t_buffer *buffer)
 {
 	char	*nbl;
 	int		pos;
@@ -8,8 +8,7 @@ char	*ft_nbchelou(int value, t_buffer buffer)
 	if (value == 0)
 	{
 		//buffer[i] = '0';
-		fill_buffer((&buffer), '0');
-		return ((&buffer)->buf);
+		fill_buffer(buffer, '0');
 	}
 	pos = 0;
 	nbl = "-2147483648";
@@ -18,10 +17,8 @@ char	*ft_nbchelou(int value, t_buffer buffer)
 		while (pos != 12)
 		{
 			//buffer[i] = nbl[pos];
-			fill_buffer((&buffer), nbl[pos]);
+			fill_buffer(buffer, nbl[pos]);
 			pos++;
 		}
-		return ((&buffer)->buf);
 	}
-	return ((&buffer)->buf);
 }

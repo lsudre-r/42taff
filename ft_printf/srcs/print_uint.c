@@ -1,12 +1,11 @@
 #include "printf.h"
 
-int	print_uint(unsigned int val, t_buffer buffer)
+void	print_uint(unsigned int val, t_buffer *buffer)
 {
 	if( val == 0)
 		ft_nbchelou(val, buffer);
 	else
 		ft_itoaB2B(val, buffer, 10);
-	return ((&buffer)->i);
 }
 
 // char *fonc(unsigned int val, char *buffer, int pos)
